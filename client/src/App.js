@@ -1,9 +1,14 @@
+import { Route, Routes } from 'react-router-dom';
+import Home from './Home';
+import SignIn from './SignIn';
 
-import 'index.css';
 
 function App () {
   return (
-    <h1>Hello World</h1>
+    <Routes>
+      <Route path="/" element={ <Home /> } />
+      <Route path="/sign-in" element={ <SignIn /> } />
+    </Routes>
   );
 }
 
