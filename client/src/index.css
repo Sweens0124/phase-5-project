@@ -68,8 +68,17 @@ a {
 #welcome {
   display: flex;
   font-family: 'Dancing Script', cursive;
-  text-align: left;
+  text-align: center;
   font-size: larger;
+  justify-content: center;
+}
+
+#home-text {
+  margin-top: 60px;
+}
+
+h3 {
+  color: red;
 }
 
 .linebreak {

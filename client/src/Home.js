@@ -9,7 +9,10 @@ const Home = () => {
       <Navbar />
       <div id="welcome" className='linebreak'>
         <img src={ companyLogo } alt='company logo' id='main-logo' />
-        <h1>{ welcome }</h1>
+        <div id='home-text'>
+          <h1>{ welcome }</h1>
+          <h3>Browse Through Our 5-Star Trips!</h3>
+        </div>
       </div>
     </>
 
