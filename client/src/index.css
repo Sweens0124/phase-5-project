@@ -59,3 +59,19 @@ a {
   color: #2D3142;
 }
 
+#main-logo {
+  padding-top: 20px;
+  height: 300px;
+  width: 350px;
+}
+
+#welcome {
+  display: flex;
+  font-family: 'Dancing Script', cursive;
+  text-align: left;
+  font-size: larger;
+}
+
+.linebreak {
+  white-space: pre-line;
+}

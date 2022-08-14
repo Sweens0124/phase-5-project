@@ -43,7 +43,6 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={ {
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -109,7 +108,6 @@ const Navbar = () => {
               textDecoration: 'none',
             } }
           >
-            LOGO
           </Typography>
           <Box sx={ { flexGrow: 1, display: { xs: 'none', md: 'flex' } } }>
             { pages.map((page) => (
