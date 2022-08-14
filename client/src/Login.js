@@ -25,7 +25,7 @@ function Copyright (props) {
 
 const theme = createTheme();
 
-const SignIn = () => {
+const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -81,7 +81,6 @@ const SignIn = () => {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
                 autoFocus
               />
               <TextField
@@ -92,7 +91,6 @@ const SignIn = () => {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
               />
               <Button
                 type="submit"
@@ -123,4 +121,4 @@ const SignIn = () => {
   );
 }
 
-export default SignIn;
+export default Login;

@@ -37,8 +37,8 @@ const SignUp = () => {
 
   const navigate = useNavigate()
 
-  const handleSignInRoute = () => {
-    navigate('/sign-in')
+  const handleLoginRoute = () => {
+    navigate('/login')
   }
 
   return (
@@ -115,7 +115,7 @@ const SignUp = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2" onClick={ handleSignInRoute }>
+                <Link href="#" variant="body2" onClick={ handleLoginRoute }>
                   Already have an account? Sign in
                 </Link>
               </Grid>
