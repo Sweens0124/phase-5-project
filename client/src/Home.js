@@ -35,7 +35,7 @@ const Home = () => {
           <h3>Browse Through Our 5-Star Trips!</h3>
         </div>
       </div>
-      <Container >
+      <Container className='container'>
         <Grid container spacing={ 4 }>
           { tripCards }
         </Grid>
