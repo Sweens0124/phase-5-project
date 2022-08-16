@@ -13,6 +13,16 @@ const Home = () => {
       .then((trips) => setTrips(trips));
   }, []);
 
+  const tripInfo = trips.map((trip) => {
+    return (
+      <TripCard
+        key={ trip.id }
+        trip={ trip }
+      />
+    )
+  })
+
+
   return (
     <>
       <Navbar />
@@ -23,7 +33,7 @@ const Home = () => {
           <h3>Browse Through Our 5-Star Trips!</h3>
         </div>
       </div>
-      <TripCard trips={ trips } />
+      { tripInfo }
     </>
 
   )
