@@ -1,5 +1,7 @@
 import Navbar from './Navbar';
 import companyLogo from './images/logo.JPG'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import TripCard from './TripCard';
 import { useEffect, useState } from 'react';
 
@@ -13,7 +15,7 @@ const Home = () => {
       .then((trips) => setTrips(trips));
   }, []);
 
-  const tripInfo = trips.map((trip) => {
+  const tripCards = trips.map((trip) => {
     return (
       <TripCard
         key={ trip.id }
@@ -33,7 +35,11 @@ const Home = () => {
           <h3>Browse Through Our 5-Star Trips!</h3>
         </div>
       </div>
-      { tripInfo }
+      <Container >
+        <Grid container spacing={ 4 }>
+          { tripCards }
+        </Grid>
+      </Container>
     </>
 
   )

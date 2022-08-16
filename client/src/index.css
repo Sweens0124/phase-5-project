@@ -84,3 +84,12 @@ h3 {
 .linebreak {
   white-space: pre-line;
 }
+
+.img {
+  width: 400px;
+  height: 200px; 
+  object-fit: contain;
+  margin-left: 50%;
+  margin-top: 25px;
+}
+
