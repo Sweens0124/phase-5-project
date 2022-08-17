@@ -3,7 +3,6 @@ import companyLogo from './images/logo.JPG'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import TripCard from './TripCard';
-import { useEffect, useState } from 'react';
 
 const Home = ({ trips }) => {
   const welcome = "Welcome to Girls Getaway! \n from Middleton Travel"

@@ -22,7 +22,7 @@ const TripCard = ({ trip }) => {
         } } >
           <Typography component="h4" variant="h4">
             { location }
-            <Typography component="h5" variant="h5">
+            <Typography component="h4" variant="h5">
               { hotel }
             </Typography>
             <Typography variant="body1">
