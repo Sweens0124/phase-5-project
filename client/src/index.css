@@ -85,16 +85,15 @@ h3 {
   white-space: pre-line;
 }
 
-.img {
-  max-width: fit-content;
-  max-height: fit-content; 
-  object-fit: contain;
-  margin-left: 70%;
-  margin-bottom: 40px;
-}
-
 .container {
   background-color: aquamarine;
   margin-top: 40px;
+}
+
+.img {
+  max-width: 250px;
+  width: auto;
+  max-height: 250px;
+  height: auto;
 }
 
