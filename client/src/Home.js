@@ -5,15 +5,8 @@ import Grid from '@mui/material/Grid'
 import TripCard from './TripCard';
 import { useEffect, useState } from 'react';
 
-const Home = () => {
+const Home = ({ trips }) => {
   const welcome = "Welcome to Girls Getaway! \n from Middleton Travel"
-  const [ trips, setTrips ] = useState([])
-
-  useEffect(() => {
-    fetch("/trips")
-      .then((r) => r.json())
-      .then((trips) => setTrips(trips));
-  }, []);
 
   const tripCards = trips.map((trip) => {
     return (
