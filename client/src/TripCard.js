@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { ImageListItem } from '@mui/material'
 
 const TripCard = ({ trip }) => {
-  const { location, date, single_price, double_price, hotel, hotel_desc, image } = trip
+  const { location, hotel, hotel_desc, image } = trip
   const navigate = useNavigate()
 
   const handleClick = () => {

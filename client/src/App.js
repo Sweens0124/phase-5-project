@@ -7,7 +7,7 @@ import TripPage from './TripPage';
 
 
 function App () {
-  const [ users, setUsers ] = useState([])
+  // const [ users, setUsers ] = useState([])
   const [ trips, setTrips ] = useState([])
 
   useEffect(() => {
@@ -16,11 +16,11 @@ function App () {
       .then((trips) => setTrips(trips));
   }, []);
 
-  useEffect(() => {
-    fetch("/users")
-      .then((r) => r.json())
-      .then((users) => setUsers(users));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/users")
+  //     .then((r) => r.json())
+  //     .then((users) => setUsers(users));
+  // }, []);
 
   return (
     <Routes>
