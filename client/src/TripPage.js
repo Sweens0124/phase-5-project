@@ -10,9 +10,9 @@ const TripPage = ({ trips }) => {
   const filteredTrip = trips.filter(trip => trip.id === parseInt(id))
   const trip = filteredTrip[ 0 ];
 
-  const displayPackages = trip?.packages.map((pack) => {
+  const displayPackages = trip?.packages.map((pack, index) => {
     return (
-      <li>{ pack }</li>
+      <li key={ index }>{ pack }</li>
     )
   })
 
@@ -35,8 +35,11 @@ const TripPage = ({ trips }) => {
         <Typography variant='h6' component="h4" marginTop={ 1 }>
           { trip?.hotel_desc }.
         </Typography>
-        <Typography variant="h3" component="h3">
-          Packages Include: { displayPackages }
+        <Typography variant="h4" component="h3">
+          Packages Include:
+          <Typography variant="h5" component="h4">
+            { displayPackages }
+          </Typography>
         </Typography>
 
       </Container>
