@@ -21,8 +21,6 @@ function App () {
       .then((r) => r.json())
       .then((users) => setUsers(users));
   }, []);
-  console.log('users ->', users);
-  console.log('trips ->', trips);
 
   return (
     <Routes>

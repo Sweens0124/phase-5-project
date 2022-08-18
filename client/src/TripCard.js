@@ -29,15 +29,15 @@ const TripCard = ({ trip }) => {
               { hotel_desc }
             </Typography>
           </Typography>
-          <ImageListItem sx={ { width: 500, height: 450 } } cols={ 2 }>
-            <img sx={ { mr: 2 } }
-              src={ image }
-              alt="hotel"
-              className="img"
-            />
-          </ImageListItem>
-          <Button variant="contained" onClick={ handleClick } >View Trip Details</Button>
         </Box>
+        <ImageListItem sx={ { width: 500, height: 450 } } cols={ 2 }>
+          <img sx={ { mr: 2 } }
+            src={ image }
+            alt="hotel"
+            className="img"
+          />
+        </ImageListItem>
+        <Button variant="contained" onClick={ handleClick } >View Trip Details</Button>
       </Paper>
     </Grid>
 
