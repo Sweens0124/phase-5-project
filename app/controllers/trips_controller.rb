@@ -1,3 +1,5 @@
 class TripsController < ApplicationController
-  belongs_to :user
+  def index
+    render json: Trip.all
+  end
 end

@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+puts 'Deleting old data...'
+
+puts 'Creating new data'
+
+User.create(username:'Lucas', email: 'lsweeney0124@gmail.com', password: 'Lucas123')
+
+Trip.create(location:'Nice, France', date:'10/2/2022 - 10/9/2022', single_price: 3749.00, double_price: 2849.00, hotel: 'Nice Riviera Hotel', hotel_desc: "The 4 star Nice Riviera Hotel places you in the heart of Nice on the French Riviera, only a few minutes from the glorious beach and a short walk from the renowned Promenade des Anglais. The Nice Riviera Hotel's 120 attractive rooms welcome singles, couples and families. Guest rooms present a quality contem porary ambience with interiors of soft pastel tones, full-length window drapes and fabrics of warm rich colour on smooth bamboo parquet flooring and modern amenities for your comfort and convenience. A 65m2 daylight confer ence room with A/V equipment can host 70 people. Each day starts with a rich complimentary buffet breakfast where you can find relaxation in the cafe lounge bar enjoying a free WiFi connection. The wellness area includes an indoor heated pool, sauna and a fitness corner to help you rejuvenate and revive the spirit (10€/person/hour). ", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0h4IgzML-O9nCDluQ_hip1kJW5eaMs-i--A&usqp=CAU', packages: ["here's first package", "here's second package", "here's third package"] , user_id: 1)
+Trip.create(location:'New York City, New York', date:'11/12/2022 - 11/15/2022', single_price: 2169.00, double_price: 1639.00, hotel: 'Hyatt Centric Times Square Hotel', hotel_desc: "Welcome to Hyatt Centric Times Square, located in the heart of New York City. We are the ideal spot for your urban getaway. Our hosts can show you coveted and covert local sights for a true taste of New York. Explore more than meets the eye in Times Square from midnight billboard activations to high tea in the most obscure location. Enjoy strolls through Central Park, the Metropolitan Museum of Art or take in a show at Radio City Music Hall. ", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEuv048e5BtfOGhc6ZRV2OTkfovYfnLw5Ydw&usqp=CAU', user_id: 1)
+Trip.create(location:'Chicago, Illinois', date:'December 3, 2022', single_price: 115.00, double_price: '', hotel: 'Christkindlmarket', hotel_desc: "Visit the Annual Chistkindlmarket, Free Admission! The smell of roasted nuts, fresh pretzels, bratwurst, hot-spiced wine, the sound of music, and the glimmer of sparkling Christmas ornaments, all in a cozy atmoshphere - This is the authentic German-style.", image: 'https://assets3.thrillist.com/v1/image/3032273/414x310/crop;webp=auto;jpeg_quality=60;progressive.jpg', user_id: 1)
+Trip.create(location:'Lisbon, Portugal', date:'02/1/2023 - 02/8/02023', single_price: 3494.00, double_price: 2925.00, hotel: 'Hotel Mundial in Lisbon', hotel_desc: "With a privileged location, next to Baixa Pombalina and within walking distance of both Praça do Comércio and the Tagus River, as well as other places of cultural interest, entertainment and commerce, such as Avenida da Liberdade. Hotel Mundial is one of the most iconic hotels in Lisbon. A timeless example in the history of Portuguese hospitality, with a well-defined mission: to live up to customers' expectations, offering excellent service and contributing to an authentic experience from the hear of the city!", image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn5MUImS0l21EMUVLtqwuZSWirz2JRvgRYEg&usqp=CAU',  user_id: 1)
+
+puts 'seeds completed'
