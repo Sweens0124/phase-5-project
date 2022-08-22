@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
 
 function Copyright (props) {
   return (
@@ -25,15 +26,34 @@ function Copyright (props) {
 
 const theme = createTheme();
 
-const SignUp = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+const SignUp = ({ onLogin }) => {
+  const [ username, setUsername ] = useState("")
+  const [ password, setPassword ] = useState("")
+  const [ email, setEmail ] = useState("")
+  const [ errors, setErrors ] = useState([])
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    setErrors([])
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        username,
+        password,
+      }),
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => onLogin(user))
+        navigate('/')
+      } else {
+        resp.json().then((err) => setErrors(err.errors))
+      }
+    })
+  }
 
   const navigate = useNavigate()
 
@@ -60,35 +80,27 @@ const SignUp = () => {
           </Typography>
           <Box component="form" noValidate onSubmit={ handleSubmit } sx={ { mt: 3 } }>
             <Grid container spacing={ 2 }>
-              <Grid item xs={ 12 } sm={ 6 }>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={ 12 } sm={ 6 }>
+              <Grid item xs={ 12 }>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  name="email"
+                  label="Email Address"
+                  type="email"
+                  id="email"
+                  value={ email }
+                  onChange={ (e) => setEmail(e.target.value) }
                 />
               </Grid>
               <Grid item xs={ 12 }>
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="username"
+                  label="Username"
+                  name="username"
+                  value={ username }
+                  onChange={ (e) => setUsername(e.target.value) }
                 />
               </Grid>
               <Grid item xs={ 12 }>
@@ -99,12 +111,16 @@ const SignUp = () => {
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  value={ password }
+                  onChange={ (e) => setPassword(e.target.value) }
                 />
               </Grid>
               <Grid item xs={ 12 }>
               </Grid>
             </Grid>
+            <section className="signup-errors">
+              { errors.map(err => (<div key={ err }> { err } </div>)) }
+            </section>
             <Button
               type="submit"
               fullWidth

@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
 
 function Copyright (props) {
   return (
@@ -25,21 +26,38 @@ function Copyright (props) {
 
 const theme = createTheme();
 
-const Login = () => {
+const Login = ({ onLogin }) => {
+  const [ username, setUsername ] = useState("")
+  const [ password, setPassword ] = useState("")
+  const [ errors, setErrors ] = useState([])
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  function handleLoginResponse (user) {
+    onLogin(user)
+    navigate("/")
+  }
 
-  const handleSignupClick = () => {
+  function handleSignupRoute () {
     navigate('/signup')
   }
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => handleLoginResponse(user))
+      } else {
+        resp.json().then((err) => setErrors(err.errors))
+      }
+    })
+  }
+
   return (
     <ThemeProvider theme={ theme }>
       <Grid container component="main" sx={ { height: '100vh' } }>
@@ -78,9 +96,11 @@ const Login = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
+                id="username"
+                label="Username"
+                name="username"
+                value={ username }
+                onChange={ (e) => setUsername(e.target.value) }
                 autoFocus
               />
               <TextField
@@ -91,6 +111,9 @@ const Login = () => {
                 label="Password"
                 type="password"
                 id="password"
+                onChange={ (e) => setPassword(e.target.value) }
+                value={ password }
+                autoFocus
               />
               <Button
                 type="submit"
@@ -102,18 +125,21 @@ const Login = () => {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2" onClick={ handleSignupClick }>
+                  <Link href="#" variant="body2" onClick={ handleSignupRoute }>
                     { "Don't have an account? Sign Up" }
                   </Link>
                 </Grid>
               </Grid>
               <Copyright sx={ { mt: 5 } } />
             </Box>
+            <section className="login-errors">
+              { errors ? (<div>
+                { errors.map((err) => (
+                  <div key={ err }>{ err }</div>)) }</div>
+              ) : null }
+            </section>
           </Box>
         </Grid>
       </Grid>

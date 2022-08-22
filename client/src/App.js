@@ -7,7 +7,7 @@ import TripPage from './TripPage';
 
 
 function App () {
-  // const [ users, setUsers ] = useState([])
+  const [ user, setUser ] = useState(null)
   const [ trips, setTrips ] = useState([])
 
   useEffect(() => {
@@ -16,17 +16,19 @@ function App () {
       .then((trips) => setTrips(trips));
   }, []);
 
-  // useEffect(() => {
-  //   fetch("/users")
-  //     .then((r) => r.json())
-  //     .then((users) => setUsers(users));
-  // }, []);
+  useEffect(() => {
+    fetch("/me").then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => setUser(user))
+      }
+    })
+  }, [])
 
   return (
     <Routes>
       <Route path="/" element={ <Home trips={ trips } /> } />
-      <Route path="/login" element={ <Login /> } />
-      <Route path="/signup" element={ <Signup /> } />
+      <Route path="/login" element={ <Login onLogin={ setUser } /> } />
+      <Route path="/signup" element={ <Signup onLogin={ setUser } /> } />
       <Route path="/trip-page/:id" element={ <TripPage trips={ trips } /> } />
     </Routes>
   );

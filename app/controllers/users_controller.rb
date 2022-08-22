@@ -1,21 +1,18 @@
 class UsersController < ApplicationController
+  skip_before_action :authorize, only: [:create]
+
   def index
     render json: User.all
   end
 
   def show
-    user = User.find(params[:id])
-    render json: user, status: :ok
+    render json: @current_user
   end
 
   def create
-    user = User.find_by(username: params[:username])
-      if user&.authenticate(params[:password])
-        session[:user_id] = user.id
-        render json: user
-      else
-        render json: { errors: ["Invalid username or password"] }, status: :unauthorized
-      end
+    user = User.create!(user_params)
+    session[:user_id] = user.id
+    render json: user, status: :created
   end
 
   private
