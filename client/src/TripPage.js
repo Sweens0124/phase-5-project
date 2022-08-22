@@ -1,7 +1,7 @@
 import { Paper, Typography, Grid, Button } from '@mui/material';
 import { Container } from '@mui/system';
 import Navbar from './Navbar';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box'
 import ImageCollage from './ImageCollage'
 
@@ -10,6 +10,7 @@ const TripPage = ({ trips }) => {
   const { id } = useParams();
   const filteredTrip = trips.filter(trip => trip.id === parseInt(id))
   const trip = filteredTrip[ 0 ];
+  const navigate = useNavigate()
 
   const displayPackages = trip?.packages.map((pack, index) => {
     return (
@@ -18,6 +19,10 @@ const TripPage = ({ trips }) => {
   })
 
   const pricing = `Single Occupancy - $ ${trip?.single_price}.00 \n Double Occupancy - $ ${trip?.double_price}.00`
+
+  const handleClick = () => {
+    navigate(`/registration`)
+  }
 
 
   return (
@@ -76,7 +81,7 @@ const TripPage = ({ trips }) => {
             </Paper>
           </Grid>
         </Grid>
-        <Button variant='contained'> Registration Form </Button>
+        <Button variant='contained' onClick={ handleClick }> Registration Form </Button>
       </Container>
     </>
   )

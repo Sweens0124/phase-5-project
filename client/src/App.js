@@ -4,6 +4,7 @@ import Home from './Home';
 import Login from './Login';
 import Signup from './Signup'
 import TripPage from './TripPage';
+import RegistrationForm from './RegistrationForm';
 
 
 function App () {
@@ -30,6 +31,7 @@ function App () {
       <Route path="/login" element={ <Login onLogin={ setUser } /> } />
       <Route path="/signup" element={ <Signup onLogin={ setUser } /> } />
       <Route path="/trip-page/:id" element={ <TripPage trips={ trips } /> } />
+      <Route path="/registration" element={ <RegistrationForm /> } />
     </Routes>
   );
 }
