@@ -18,10 +18,13 @@ import { useNavigate } from 'react-router-dom';
 const pages = [ 'Home' ];
 const settings = [ 'Profile', 'Logout' ];
 
-const Navbar = () => {
+const Navbar = ({ onSetUser, user }) => {
   const [ anchorElNav, setAnchorElNav ] = useState(null);
   const [ anchorElUser, setAnchorElUser ] = useState(null);
+
   const navigate = useNavigate();
+
+  console.log(user)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -38,6 +41,18 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  function handleLogoutClick (e) {
+    e.preventDefault()
+    fetch("/logout", {
+      method: "DELETE",
+    }).then((resp) => {
+      if (resp.ok) {
+        onSetUser(null)
+        navigate('/login')
+      }
+    })
+  }
 
   return (
     <AppBar position="static">
@@ -126,10 +141,13 @@ const Navbar = () => {
           </Box>
 
           <Box sx={ { flexGrow: 0 } }>
-            <div className="login-button" id="button-3">
+            { !user ? <div className="login-button" id="button-3">
               <div id="circle"></div>
               <a href="/login">Login</a>
-            </div>
+            </div> : <div className="login-button" id="button-3">
+              <div id="circle"></div>
+              <a href="/" onClick={ handleLogoutClick }>Logout</a>
+            </div> }
             <Tooltip title="Open settings">
               <IconButton onClick={ handleOpenUserMenu } sx={ { p: 0 } }>
                 <Avatar alt="L" src="/static/images/avatar/2.jpg" />

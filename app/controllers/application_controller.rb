@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
-
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+  
   before_action :authorize
 
   private

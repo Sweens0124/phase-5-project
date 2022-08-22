@@ -5,6 +5,7 @@ import Login from './Login';
 import Signup from './Signup'
 import TripPage from './TripPage';
 import RegistrationForm from './RegistrationForm';
+import Navbar from './Navbar';
 
 
 function App () {
@@ -26,13 +27,16 @@ function App () {
   }, [])
 
   return (
-    <Routes>
-      <Route path="/" element={ <Home trips={ trips } /> } />
-      <Route path="/login" element={ <Login onLogin={ setUser } /> } />
-      <Route path="/signup" element={ <Signup onLogin={ setUser } /> } />
-      <Route path="/trip-page/:id" element={ <TripPage trips={ trips } /> } />
-      <Route path="/registration" element={ <RegistrationForm /> } />
-    </Routes>
+    <>
+      <Navbar user={ user } onSetUser={ setUser } />
+      <Routes>
+        <Route path="/" element={ <Home trips={ trips } /> } />
+        <Route path="/login" element={ <Login onLogin={ setUser } /> } />
+        <Route path="/signup" element={ <Signup onLogin={ setUser } /> } />
+        <Route path="/trip-page/:id" element={ <TripPage trips={ trips } /> } />
+        <Route path="/registration" element={ <RegistrationForm /> } />
+      </Routes>
+    </>
   );
 }
 

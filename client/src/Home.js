@@ -1,4 +1,3 @@
-import Navbar from './Navbar';
 import companyLogo from './images/logo.JPG'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
@@ -19,7 +18,6 @@ const Home = ({ trips }) => {
 
   return (
     <>
-      <Navbar />
       <div id="welcome" className='linebreak'>
         <img src={ companyLogo } alt='company logo' id='main-logo' />
         <div id='home-text'>

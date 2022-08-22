@@ -1,6 +1,5 @@
 import { Paper, Typography, Grid, Button } from '@mui/material';
 import { Container } from '@mui/system';
-import Navbar from './Navbar';
 import { useNavigate, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box'
 import ImageCollage from './ImageCollage'
@@ -27,7 +26,6 @@ const TripPage = ({ trips }) => {
 
   return (
     <>
-      <Navbar />
       <Container sx={ {
         width: 900,
         backgroundColor: 'aquamarine'
