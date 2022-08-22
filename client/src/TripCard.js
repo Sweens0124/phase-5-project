@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { ImageListItem } from '@mui/material'
 
 const TripCard = ({ trip }) => {
-  const { location, hotel, hotel_desc, image } = trip
+  const { location, date, hotel_desc, image } = trip
   const navigate = useNavigate()
 
   const handleClick = () => {
@@ -15,19 +15,21 @@ const TripCard = ({ trip }) => {
   }
 
   return (
-    <Grid item xs={ 12 }>
-      <Paper elevation={ 12 }>
+    <Grid item xs={ 4 }>
+      <Paper elevation={ 15 }>
         <Box padding={ 1 } sx={ {
-          flexGrow: 1
+          flexGrow: 1,
+          textAlign: 'center',
+          justifyContent: 'center'
         } } >
           <Typography component="h4" variant="h4">
             { location }
-            <Typography component="h4" variant="h5">
-              { hotel }
+            <Typography component="h4" variant="h6">
+              { date }
             </Typography>
-            <Typography variant="body1">
+            {/* <Typography variant="body1">
               { hotel_desc }
-            </Typography>
+            </Typography> */}
           </Typography>
         </Box>
         <ImageListItem sx={ { width: 500, height: 450 } } cols={ 2 }>
@@ -37,7 +39,7 @@ const TripCard = ({ trip }) => {
             className="img"
           />
         </ImageListItem>
-        <Button variant="contained" onClick={ handleClick } >View Trip Details</Button>
+        <Button className='trip-btn' variant="contained" onClick={ handleClick } >View Trip Details</Button>
       </Paper>
     </Grid>
 

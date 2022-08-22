@@ -37,7 +37,7 @@ const TripPage = ({ trips }) => {
           <img src={ trip?.image } alt='' height={ 325 } />
           <ImageCollage />
         </Box>
-        <Paper elevation={ 10 } sx={ { borderRadius: 25 } } >
+        <Paper elevation={ 8 } sx={ { borderRadius: 10 } } >
           <Box sx={ {
             width: 700,
             textAlign: 'center',
