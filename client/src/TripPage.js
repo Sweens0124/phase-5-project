@@ -3,8 +3,16 @@ import { Container } from '@mui/system';
 import { useNavigate, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box'
 import ImageCollage from './ImageCollage'
+import { Modal } from 'react-bootstrap';
+import { useState } from 'react';
+import RegistrationForm from './RegistrationForm';
 
 const TripPage = ({ trips }) => {
+  const [ showModal, setShowModal ] = useState(false)
+
+  // const handleShowModal = () => {
+  //   setShowModal(!showModal)
+  // }
 
   const { id } = useParams();
   const filteredTrip = trips.filter(trip => trip.id === parseInt(id))
@@ -18,11 +26,6 @@ const TripPage = ({ trips }) => {
   })
 
   const pricing = `Single Occupancy - $ ${trip?.single_price}.00 \n Double Occupancy - $ ${trip?.double_price}.00`
-
-  const handleClick = () => {
-    navigate(`/registration`)
-  }
-
 
   return (
     <>
@@ -79,8 +82,18 @@ const TripPage = ({ trips }) => {
             </Paper>
           </Grid>
         </Grid>
-        <Button variant='contained' onClick={ handleClick }> Registration Form </Button>
+        <Button variant='contained' onClick={ () => setShowModal(true) }> Registration Form </Button>
       </Container>
+      <Modal show={ showModal }>
+        <Modal.Header>
+          <Modal.Title>
+            <RegistrationForm trip={ trip } />
+          </Modal.Title>
+        </Modal.Header>
+        <Button onClick={ () => setShowModal(false) }>
+          Close
+        </Button>
+      </Modal>
     </>
   )
 }

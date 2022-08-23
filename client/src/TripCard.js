@@ -27,9 +27,6 @@ const TripCard = ({ trip }) => {
             <Typography component="h4" variant="h6">
               { date }
             </Typography>
-            {/* <Typography variant="body1">
-              { hotel_desc }
-            </Typography> */}
           </Typography>
         </Box>
         <ImageListItem sx={ { width: '100%', height: '100%' } } cols={ 2 }>
@@ -42,7 +39,7 @@ const TripCard = ({ trip }) => {
             className="img"
           />
         </ImageListItem>
-        <Button className='trip-btn' variant="contained" onClick={ handleClick } >View Trip Details</Button>
+        <Button key={ trip.id } className='trip-btn' variant="contained" onClick={ handleClick } >View Trip Details</Button>
       </Paper>
     </Grid>
 

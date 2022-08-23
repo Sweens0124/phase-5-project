@@ -3,8 +3,8 @@ import FilteredPropsInputField from './FilteredPropsInputField';
 
 
 export const Title = styled.h1`
-  font-size: 1rem;
-  line-height: 1.25rem;
+  font-size: 2rem;
+  line-height: 2rem;
   margin-top: 0;
 `;
 
@@ -22,7 +22,7 @@ export const Input = styled(FilteredPropsInputField)`
   font-style: normal;
   font-weight: 400;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-bottom: 1rem;
   padding: 0.75rem 0.75rem;
 
   &:focus,

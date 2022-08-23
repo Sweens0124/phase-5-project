@@ -5,7 +5,8 @@ import { useState } from 'react'
 
 import {
   PageWrapper,
-  Input
+  Input,
+  Title
 } from './Styles'
 
 const validationSchema = Yup.object({
@@ -31,9 +32,9 @@ const validationSchema = Yup.object({
     .required('Required')
 })
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ trip }) => {
   const [ formValues, setFormValues ] = useState();
-
+  const registrationInfo = `Registration For ${trip?.location} \n on ${trip?.date}`
 
   return (
     <Formik
@@ -57,6 +58,9 @@ const RegistrationForm = () => {
     >
       { formik => (
         <PageWrapper>
+          <Title className='linebreak'>
+            { registrationInfo }
+          </Title>
           <form onSubmit={ formik.handleSubmit }>
             <label htmlFor='fullName'>Full Name</label>
             <Input
@@ -102,6 +106,7 @@ const RegistrationForm = () => {
               id='city'
               name='city'
               type='text'
+              placeholder='Madison'
               onChange={ formik.handleChange }
               onBlur={ formik.handleBlur }
               value={ formik.values.city }
@@ -115,6 +120,7 @@ const RegistrationForm = () => {
               id='state'
               name='state'
               type='text'
+              placeholder='WI'
               onChange={ formik.handleChange }
               onBlur={ formik.handleBlur }
               value={ formik.values.state }
@@ -150,7 +156,7 @@ const RegistrationForm = () => {
               <div>{ formik.errors.phoneNumber }</div>
             ) : null }
 
-            <label htmlFor='email'>Full Name</label>
+            <label htmlFor='email'>Email Address</label>
             <Input
               id='email'
               name='email'
