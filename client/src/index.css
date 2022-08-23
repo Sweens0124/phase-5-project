@@ -95,11 +95,13 @@ h3 {
   width: auto;
   max-height: 250px;
   height: auto;
-  margin-left: 10%;
+  margin: auto;
 }
 
 .trip-btn {
-  margin-left: 100px;
+  text-align: center;
+  margin: auto;
+  
 }
 
 

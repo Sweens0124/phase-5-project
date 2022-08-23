@@ -26,7 +26,7 @@ const Home = ({ trips }) => {
         </div>
       </div>
       <Container className='container'>
-        <Grid container spacing={ 4 }>
+        <Grid container spacing={ 4 } alignItems='center' display="flex">
           { tripCards }
         </Grid>
       </Container>

@@ -32,8 +32,11 @@ const TripCard = ({ trip }) => {
             </Typography> */}
           </Typography>
         </Box>
-        <ImageListItem sx={ { width: 500, height: 450 } } cols={ 2 }>
-          <img sx={ { mr: 2 } }
+        <ImageListItem sx={ { width: '100%', height: '100%' } } cols={ 2 }>
+          <img
+            style={ {
+              position: 'relative'
+            } }
             src={ image }
             alt="hotel"
             className="img"
