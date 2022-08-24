@@ -29,7 +29,6 @@ function App () {
   }, [])
 
   let id = user?.id
-  console.log(id)
 
   useEffect(() => {
     fetch(`/users/${id}`)
@@ -39,7 +38,7 @@ function App () {
 
   return (
     <>
-      <Navbar user={ user } onSetUser={ setUser } />
+      <Navbar userLogged={ user } onSetUser={ setUser } />
       <Routes>
         <Route path="/" element={ <Home trips={ trips } /> } />
         <Route path="/login" element={ <Login onLogin={ setUser } /> } />

@@ -13,16 +13,18 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import companyLogo from './images/logo.JPG'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const pages = [ 'Home', ' Profile ' ];
-const settings = [ 'Profile', 'Logout' ];
 
-const Navbar = ({ onSetUser, user }) => {
+const Navbar = ({ onSetUser, userLogged }) => {
   const [ anchorElNav, setAnchorElNav ] = useState(null);
   const [ anchorElUser, setAnchorElUser ] = useState(null);
-
   const navigate = useNavigate();
+  const params = useParams()
+
+
+  console.log(params)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -31,9 +33,7 @@ const Navbar = ({ onSetUser, user }) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = (setting) => {
-
-
+  const handleCloseNavMenu = () => {
     setAnchorElNav(null);
     navigate('/')
   };
@@ -50,8 +50,14 @@ const Navbar = ({ onSetUser, user }) => {
       if (resp.ok) {
         onSetUser(null)
         navigate('/login')
+        handleCloseNavMenu()
       }
     })
+  }
+
+  const handleProfileClick = () => {
+    handleCloseNavMenu()
+    navigate(`/user/${userLogged.id}`)
   }
 
   return (
@@ -141,7 +147,7 @@ const Navbar = ({ onSetUser, user }) => {
           </Box>
 
           <Box sx={ { flexGrow: 0 } }>
-            { !user ? <div className="login-button" id="button-3">
+            { !userLogged ? <div className="login-button" id="button-3">
               <div id="circle"></div>
               <a href="/login">Login</a>
             </div> : <div className="login-button" id="button-3">
@@ -150,7 +156,7 @@ const Navbar = ({ onSetUser, user }) => {
             </div> }
             <Tooltip title="Open settings">
               <IconButton onClick={ handleOpenUserMenu } sx={ { p: 0 } }>
-                <Avatar alt="L" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="L" src='https://i.imgur.com/KUJ5ZoO.jpg' />
               </IconButton>
             </Tooltip>
             <Menu
@@ -169,11 +175,12 @@ const Navbar = ({ onSetUser, user }) => {
               open={ Boolean(anchorElUser) }
               onClose={ handleCloseUserMenu }
             >
-              { settings.map((setting) => (
-                <MenuItem key={ setting } onClick={ () => (handleCloseUserMenu(setting)) }>
-                  <Typography textAlign="center">{ setting }</Typography>
-                </MenuItem>
-              )) }
+              <MenuItem key='Logout' onClick={ handleLogoutClick }>
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
+              <MenuItem key='Profile' onClick={ handleProfileClick }>
+                <Typography textAlign="center">Profile</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
