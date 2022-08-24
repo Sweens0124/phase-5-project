@@ -100,18 +100,16 @@ h3 {
   margin-top: 40px;
 }
 
-.img {
-  max-width: 250px;
+#home-img {
+  max-width: 80%;
   width: auto;
-  max-height: 250px;
+  max-height: 75%;
   height: auto;
   margin: auto;
 }
 
 .trip-btn {
-  text-align: center;
-  margin: auto;
-  
+  margin-left: 50%;
 }
 
 

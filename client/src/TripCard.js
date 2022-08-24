@@ -20,9 +20,9 @@ const TripCard = ({ trip }) => {
         <Box padding={ 1 } sx={ {
           flexGrow: 1,
           textAlign: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
         } } >
-          <Typography component="h4" variant="h4">
+          <Typography component="h4" variant="h5">
             { location }
             <Typography component="h4" variant="h6">
               { date }
@@ -30,7 +30,7 @@ const TripCard = ({ trip }) => {
           </Typography>
         </Box>
         <ImageListItem sx={ { width: '100%', height: '100%' } } cols={ 2 }>
-          <img
+          <img id='home-img'
             style={ {
               position: 'relative'
             } }
