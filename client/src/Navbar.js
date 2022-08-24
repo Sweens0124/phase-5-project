@@ -15,7 +15,7 @@ import companyLogo from './images/logo.JPG'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const pages = [ 'Home' ];
+const pages = [ 'Home', ' Profile ' ];
 const settings = [ 'Profile', 'Logout' ];
 
 const Navbar = ({ onSetUser, user }) => {
@@ -31,7 +31,9 @@ const Navbar = ({ onSetUser, user }) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (setting) => {
+
+
     setAnchorElNav(null);
     navigate('/')
   };
@@ -168,7 +170,7 @@ const Navbar = ({ onSetUser, user }) => {
               onClose={ handleCloseUserMenu }
             >
               { settings.map((setting) => (
-                <MenuItem key={ setting } onClick={ handleCloseUserMenu }>
+                <MenuItem key={ setting } onClick={ () => (handleCloseUserMenu(setting)) }>
                   <Typography textAlign="center">{ setting }</Typography>
                 </MenuItem>
               )) }

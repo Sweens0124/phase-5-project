@@ -24,9 +24,9 @@ const TripCard = ({ trip }) => {
         } } >
           <Typography component="h4" variant="h5">
             { location }
-            <Typography component="h4" variant="h6">
-              { date }
-            </Typography>
+          </Typography>
+          <Typography component="h4" variant="h6">
+            { date }
           </Typography>
         </Box>
         <ImageListItem sx={ { width: '100%', height: '100%' } } cols={ 2 }>

@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @current_user
+    user = User.find(session[:user_id])
+    render json: user
   end
 
   def create

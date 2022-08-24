@@ -14,8 +14,6 @@ const TripPage = ({ trips, userLogged }) => {
   //   setShowModal(!showModal)
   // }
 
-  console.log(userLogged)
-
   const { id } = useParams();
   const filteredTrip = trips.filter(trip => trip.id === parseInt(id))
   const trip = filteredTrip[ 0 ];

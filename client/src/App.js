@@ -6,11 +6,13 @@ import Signup from './Signup'
 import TripPage from './TripPage';
 import Navbar from './Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Profile from './Profile';
 
 
 function App () {
   const [ user, setUser ] = useState(null)
   const [ trips, setTrips ] = useState([])
+  const [ userTrips, setUserTrips ] = useState({})
 
   useEffect(() => {
     fetch("/trips")
@@ -26,6 +28,15 @@ function App () {
     })
   }, [])
 
+  let id = user?.id
+  console.log(id)
+
+  useEffect(() => {
+    fetch(`/users/${id}`)
+      .then((r) => r.json())
+      .then((data) => setUserTrips(data.user_trips))
+  }, [])
+
   return (
     <>
       <Navbar user={ user } onSetUser={ setUser } />
@@ -34,6 +45,7 @@ function App () {
         <Route path="/login" element={ <Login onLogin={ setUser } /> } />
         <Route path="/signup" element={ <Signup onLogin={ setUser } /> } />
         <Route path="/trip-page/:id" element={ <TripPage userLogged={ user } trips={ trips } /> } />
+        <Route path="/user/:id" element={ <Profile userLogged={ user } userTrips={ userTrips } /> } />
       </Routes>
     </>
   );

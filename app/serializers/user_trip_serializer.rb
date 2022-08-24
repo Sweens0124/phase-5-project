@@ -1,5 +1,5 @@
 class UserTripSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :trip
   has_one :user
   has_one :trip
 end
