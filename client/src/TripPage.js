@@ -3,9 +3,9 @@ import { Container } from '@mui/system';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box'
 import ImageCollage from './ImageCollage'
-import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import RegistrationForm from './RegistrationForm';
+import { Modal } from 'react-bootstrap'
 
 const TripPage = ({ trips, userLogged }) => {
   const [ showModal, setShowModal ] = useState(false)
@@ -13,6 +13,8 @@ const TripPage = ({ trips, userLogged }) => {
   // const handleShowModal = () => {
   //   setShowModal(!showModal)
   // }
+
+  console.log(userLogged)
 
   const { id } = useParams();
   const filteredTrip = trips.filter(trip => trip.id === parseInt(id))

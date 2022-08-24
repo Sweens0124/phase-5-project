@@ -5,6 +5,7 @@ import Login from './Login';
 import Signup from './Signup'
 import TripPage from './TripPage';
 import Navbar from './Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App () {
