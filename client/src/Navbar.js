@@ -24,8 +24,6 @@ const Navbar = ({ onSetUser, user }) => {
 
   const navigate = useNavigate();
 
-  console.log(user)
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };

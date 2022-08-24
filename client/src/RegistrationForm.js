@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { useState } from 'react'
+// import { useState } from 'react'
 
 import {
   PageWrapper,
@@ -32,9 +32,19 @@ const validationSchema = Yup.object({
     .required('Required')
 })
 
-const RegistrationForm = ({ trip }) => {
-  const [ formValues, setFormValues ] = useState();
+const RegistrationForm = ({ trip, userLogged }) => {
+  // const [ formValues, setFormValues ] = useState();
   const registrationInfo = `Registration For ${trip?.location} \n on ${trip?.date}`
+  let tripId = trip?.id
+  let userId = userLogged.id
+
+  console.log('Trip id -->', tripId)
+  console.log('User id -->', userId)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+  }
 
   return (
     <Formik
@@ -170,7 +180,7 @@ const RegistrationForm = ({ trip }) => {
               <div>{ formik.errors.email }</div>
             ) : null }
 
-            <Button variant='contained' type="submit">Submit</Button>
+            <Button variant='contained' type="submit" onSubmit={ handleSubmit }>Submit</Button>
           </form>
         </PageWrapper>
       ) }

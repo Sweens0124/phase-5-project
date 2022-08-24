@@ -1,13 +1,13 @@
 import { Paper, Typography, Grid, Button } from '@mui/material';
 import { Container } from '@mui/system';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box'
 import ImageCollage from './ImageCollage'
 import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import RegistrationForm from './RegistrationForm';
 
-const TripPage = ({ trips }) => {
+const TripPage = ({ trips, userLogged }) => {
   const [ showModal, setShowModal ] = useState(false)
 
   // const handleShowModal = () => {
@@ -17,7 +17,6 @@ const TripPage = ({ trips }) => {
   const { id } = useParams();
   const filteredTrip = trips.filter(trip => trip.id === parseInt(id))
   const trip = filteredTrip[ 0 ];
-  const navigate = useNavigate()
 
   const displayPackages = trip?.packages.map((pack, index) => {
     return (
@@ -87,7 +86,7 @@ const TripPage = ({ trips }) => {
       <Modal show={ showModal }>
         <Modal.Header>
           <Modal.Title>
-            <RegistrationForm trip={ trip } />
+            <RegistrationForm userLogged={ userLogged } trip={ trip } />
           </Modal.Title>
         </Modal.Header>
         <Button onClick={ () => setShowModal(false) }>
