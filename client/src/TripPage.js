@@ -29,7 +29,7 @@ const TripPage = ({ trips, userLogged }) => {
   const pricing = `Single Occupancy - $ ${trip?.single_price}.00 \n Double Occupancy - $ ${trip?.double_price}.00`
 
   return (
-    <>
+    <div className='trip-page'>
       <Container sx={ {
         width: 900,
         backgroundColor: 'aquamarine'
@@ -95,7 +95,7 @@ const TripPage = ({ trips, userLogged }) => {
           Close
         </Button>
       </Modal>
-    </>
+    </div>
   )
 }
 

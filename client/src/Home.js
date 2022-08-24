@@ -17,7 +17,7 @@ const Home = ({ trips }) => {
 
 
   return (
-    <>
+    <div className='home-page'>
       <div id="welcome" className='linebreak'>
         <img src={ companyLogo } alt='company logo' id='main-logo' />
         <div id='home-text'>
@@ -30,7 +30,7 @@ const Home = ({ trips }) => {
           { tripCards }
         </Grid>
       </Container>
-    </>
+    </div>
 
   )
 }

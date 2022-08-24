@@ -1,8 +1,10 @@
 Rails.application.routes.draw do  
+  resources :user_trips, only: [:index, :create]
   get 'session/create'
   get 'session/destroy'
   resources :users
   resources :trips, only: [:index]
+
 
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
