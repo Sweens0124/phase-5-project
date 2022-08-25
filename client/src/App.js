@@ -34,7 +34,7 @@ function App () {
     fetch(`/users/${id}`)
       .then((r) => r.json())
       .then((data) => setUserTrips(data.user_trips))
-  }, [])
+  }, [ id ])
 
   return (
     <>

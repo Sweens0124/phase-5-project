@@ -23,9 +23,6 @@ const Navbar = ({ onSetUser, userLogged }) => {
   const navigate = useNavigate();
   const params = useParams()
 
-
-  console.log(params)
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -156,7 +153,7 @@ const Navbar = ({ onSetUser, userLogged }) => {
             </div> }
             <Tooltip title="Open settings">
               <IconButton onClick={ handleOpenUserMenu } sx={ { p: 0 } }>
-                <Avatar alt="L" src='https://i.imgur.com/KUJ5ZoO.jpg' />
+                <Avatar alt="L" src={ userLogged?.image } />
               </IconButton>
             </Tooltip>
             <Menu

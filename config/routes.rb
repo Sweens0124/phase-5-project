@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :user_trips, only: [:index, :create]
   get 'session/create'
   get 'session/destroy'
-  resources :users, only: [:index, :show, :create]
+  resources :users
   resources :trips, only: [:index]
 
 
