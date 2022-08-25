@@ -39,15 +39,20 @@ const Navbar = ({ onSetUser, userLogged, loggedIn }) => {
     setAnchorElUser(null);
   };
 
+  const handleLoginClick = () => {
+    handleCloseUserMenu()
+    navigate('/login')
+  }
+
   function handleLogoutClick (e) {
     e.preventDefault()
+    handleCloseUserMenu()
     fetch("/logout", {
       method: "DELETE",
     }).then((resp) => {
       if (resp.ok) {
         onSetUser(null)
         navigate('/login')
-        handleCloseUserMenu()
       }
     })
   }
@@ -144,10 +149,6 @@ const Navbar = ({ onSetUser, userLogged, loggedIn }) => {
           </Box>
 
           <Box sx={ { flexGrow: 0 } }>
-            { !userLogged ? <div className="login-button" id="button-3">
-              <div id="circle"></div>
-              <a href="/login">Login</a>
-            </div> : null }
             <Tooltip title="Open settings">
               <IconButton onClick={ handleOpenUserMenu } sx={ { p: 0 } }>
                 <Avatar alt="L" src={ userLogged?.image } />
@@ -169,9 +170,11 @@ const Navbar = ({ onSetUser, userLogged, loggedIn }) => {
               open={ Boolean(anchorElUser) }
               onClose={ handleCloseUserMenu }
             >
-              <MenuItem key='Logout' onClick={ handleLogoutClick }>
+              { !userLogged ? <MenuItem key='Login' onClick={ handleLoginClick }>
+                <Typography textAlign="center">Login</Typography>
+              </MenuItem> : <MenuItem key='Logout' onClick={ handleLogoutClick }>
                 <Typography textAlign="center">Logout</Typography>
-              </MenuItem>
+              </MenuItem> }
               <MenuItem key='Profile' onClick={ handleProfileClick }>
                 <Typography textAlign="center">Profile</Typography>
               </MenuItem>

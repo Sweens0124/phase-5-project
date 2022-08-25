@@ -40,6 +40,8 @@ const Profile = ({ userLogged }) => {
       .then((data) => setUserTrips(data));
   }, []);
 
+  console.log();
+
   const filteredUserTrips = userTrips.filter(trip => trip.user.id === userLogged?.id)
   // console.log('This Users trips ->', filteredUserTrips)
 
@@ -61,15 +63,18 @@ const Profile = ({ userLogged }) => {
     return (
       <Grid key={ id } item xs={ 4 }>
         <Paper elevation={ 12 }>
-          <Box>
-            <Typography variant="h4" component="h1" marginTop={ 2 } sx={ { textAlign: 'left' } }>
+          <Box sx={ {
+            paddingBottom: 2,
+            marginBottom: 5
+          } }>
+            <Typography variant="h5" component="h2" marginTop={ 2 } sx={ { textAlign: 'center' } }>
               { trip.trip.location }
-              <Typography>
-                { trip.trip.date }
-              </Typography>
             </Typography>
-            <Typography>
-              {/* question for Emiley tomorrow morning! */ }
+            <Typography variant="h5" component="h2" marginTop={ 2 } textAlign='center'>
+              { trip.trip.date }
+            </Typography>
+            <Typography textAlign='center' marginTop={ 2 }>
+              Users Going on Trip: { trip.trip.user_count }
             </Typography>
             {/* <Button onClick={handleLength} variant='contained' key={ id }>View Users Going to { trip.trip.location }</Button> */ }
           </Box>

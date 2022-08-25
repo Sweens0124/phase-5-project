@@ -1,16 +1,21 @@
+
+
 .home-page {
   background: url('https://www.10wallpaper.com/wallpaper/2560x1600/1702/Austria_Tourism_Travel_Resort-High_Quality_HD_Wallpaper_2560x1600.jpg') no-repeat center center fixed;
   background-size: cover;
+  height: 1100px;
 }
 
 .trip-page {
     background: url('https://cdn.wallpapersafari.com/32/78/uM1By7.jpg') no-repeat center center fixed;
   background-size: cover;
+  height: 1500px;
 }
 
 .profile-page {
   background: url('https://img.besthqwallpapers.com/Uploads/16-4-2018/48522/travel-concepts-wooden-plane-seashells-summer-travel-blue-boards.jpg') no-repeat center center fixed;
-  background-size: cover
+  background-size: cover;
+  height: 1000px;
 }
 
 .nav-logo {
@@ -107,6 +112,7 @@ h3 {
 .container2 {
   background-color: aquamarine;
   margin-top: 10%;
+  background-size: cover
 }
 
 #home-img {
