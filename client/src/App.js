@@ -12,7 +12,7 @@ import Profile from './Profile';
 function App () {
   const [ user, setUser ] = useState(null)
   const [ trips, setTrips ] = useState([])
-  const [ userTrips, setUserTrips ] = useState({})
+  // const [ userTrips, setUserTrips ] = useState({})
 
   useEffect(() => {
     fetch("/trips")
@@ -23,18 +23,12 @@ function App () {
   useEffect(() => {
     fetch("/me").then((resp) => {
       if (resp.ok) {
-        resp.json().then((user) => setUser(user))
+        resp.json().then((user) => {
+          setUser(user)
+        })
       }
     })
   }, [])
-
-  let id = user?.id
-
-  useEffect(() => {
-    fetch(`/users/${id}`)
-      .then((r) => r.json())
-      .then((data) => setUserTrips(data.user_trips))
-  }, [ id ])
 
   return (
     <>
@@ -44,7 +38,7 @@ function App () {
         <Route path="/login" element={ <Login onLogin={ setUser } /> } />
         <Route path="/signup" element={ <Signup onLogin={ setUser } /> } />
         <Route path="/trip-page/:id" element={ <TripPage userLogged={ user } trips={ trips } /> } />
-        <Route path="/user/:id" element={ <Profile userLogged={ user } userTrips={ userTrips } /> } />
+        <Route path="/user/:id" element={ <Profile userLogged={ user } /> } />
       </Routes>
     </>
   );

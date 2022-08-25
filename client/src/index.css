@@ -8,6 +8,11 @@
   background-size: cover;
 }
 
+.profile-page {
+  background: url('https://img.besthqwallpapers.com/Uploads/16-4-2018/48522/travel-concepts-wooden-plane-seashells-summer-travel-blue-boards.jpg') no-repeat center center fixed;
+  background-size: cover
+}
+
 .nav-logo {
   height: 50px;
   width: 50px;
@@ -99,6 +104,10 @@ h3 {
   background-color: aquamarine;
   margin-top: 40px;
 }
+.container2 {
+  background-color: aquamarine;
+  margin-top: 10%;
+}
 
 #home-img {
   max-width: 80%;
@@ -112,9 +121,15 @@ h3 {
   margin-left: 50%;
 }
 
-
-.idfk {
-  background-color: cyan;
+.user-welcome {
+  text-align: center;
+  position: flex;
+  padding-top: 20px;
 }
 
+#edit-profile {
+  margin-top: 20px;
+  position: flex;
+  margin-left: 85%;
+}
 /* CSS FROM FORMIK ---> */

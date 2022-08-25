@@ -13,15 +13,15 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import companyLogo from './images/logo.JPG'
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const pages = [ 'Home', ' Profile ' ];
+const pages = [ 'Home' ];
 
-const Navbar = ({ onSetUser, userLogged }) => {
+const Navbar = ({ onSetUser, userLogged, loggedIn }) => {
   const [ anchorElNav, setAnchorElNav ] = useState(null);
   const [ anchorElUser, setAnchorElUser ] = useState(null);
+
   const navigate = useNavigate();
-  const params = useParams()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -47,7 +47,7 @@ const Navbar = ({ onSetUser, userLogged }) => {
       if (resp.ok) {
         onSetUser(null)
         navigate('/login')
-        handleCloseNavMenu()
+        handleCloseUserMenu()
       }
     })
   }
@@ -147,10 +147,7 @@ const Navbar = ({ onSetUser, userLogged }) => {
             { !userLogged ? <div className="login-button" id="button-3">
               <div id="circle"></div>
               <a href="/login">Login</a>
-            </div> : <div className="login-button" id="button-3">
-              <div id="circle"></div>
-              <a href="/" onClick={ handleLogoutClick }>Logout</a>
-            </div> }
+            </div> : null }
             <Tooltip title="Open settings">
               <IconButton onClick={ handleOpenUserMenu } sx={ { p: 0 } }>
                 <Avatar alt="L" src={ userLogged?.image } />

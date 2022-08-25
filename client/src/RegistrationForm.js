@@ -1,6 +1,7 @@
 import { Button } from '@mui/material'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+// import * as emailjs from 'emailjs-com'
 // import { useState } from 'react'
 
 import {
@@ -34,12 +35,11 @@ const validationSchema = Yup.object({
 
 const RegistrationForm = ({ trip, userLogged }) => {
   // const [ formValues, setFormValues ] = useState();
+  // const [ buttonState, setButtonState ] = useState('Send Message');
+
   const registrationInfo = `Registration For ${trip?.location} \n on ${trip?.date}`
   let tripId = trip?.id
-  let userId = userLogged.id
-
-  console.log('Trip id -->', tripId)
-  console.log('User id -->', userId)
+  let userId = userLogged?.id
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -60,6 +60,8 @@ const RegistrationForm = ({ trip, userLogged }) => {
       } }
       validationSchema={ validationSchema }
       onSubmit={ (values, { setSubmitting }) => {
+
+
         console.log({ ...values, userId, tripId })
         fetch('/user_trips', {
           method: "POST",
