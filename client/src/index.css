@@ -132,4 +132,16 @@ h3 {
   position: flex;
   margin-left: 85%;
 }
-/* CSS FROM FORMIK ---> */
+
+.reg-btn {
+  display: flex;
+}
+
+.img {
+  max-width: 80%;
+  width: auto;
+  max-height: 75%;
+  height: auto;
+  margin: auto;
+  text-align: center;
+}

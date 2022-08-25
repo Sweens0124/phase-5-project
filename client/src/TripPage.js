@@ -10,10 +10,6 @@ import { Modal } from 'react-bootstrap'
 const TripPage = ({ trips, userLogged }) => {
   const [ showModal, setShowModal ] = useState(false)
 
-  // const handleShowModal = () => {
-  //   setShowModal(!showModal)
-  // }
-
   const { id } = useParams();
   const filteredTrip = trips.filter(trip => trip.id === parseInt(id))
   const trip = filteredTrip[ 0 ];
@@ -30,14 +26,16 @@ const TripPage = ({ trips, userLogged }) => {
     <div className='trip-page'>
       <Container sx={ {
         width: 900,
-        backgroundColor: 'aquamarine'
+        backgroundColor: 'aquamarine',
+        marginBottom: 2
       } }>
         <Typography variant="h3" component="h1" marginTop={ 2 } sx={ { textAlign: 'center' } }>
           Visit { trip?.location }!
         </Typography>
         <Box marginTop={ 3 } sx={ {
           display: 'flex',
-          marginLeft: 4
+          marginLeft: 4,
+          marginTop: 3
         } }>
           <img src={ trip?.image } alt='' height={ 325 } />
           <ImageCollage />
@@ -77,12 +75,17 @@ const TripPage = ({ trips, userLogged }) => {
               <Typography variant="h6" component="h5" className='linebreak'>
                 { pricing }
               </Typography>
-
             </Paper>
           </Grid>
+          <Grid item xs={ 6 } sx={ {
+            marginBottom: 4
+          } }>
+            <Button variant='contained' className='reg-btn' onClick={ () => setShowModal(true) }> Registration Form </Button>
+
+          </Grid>
         </Grid>
-        <Button variant='contained' onClick={ () => setShowModal(true) }> Registration Form </Button>
       </Container>
+
       <Modal show={ showModal }>
         <Modal.Header>
           <Modal.Title>
@@ -93,7 +96,7 @@ const TripPage = ({ trips, userLogged }) => {
           Close
         </Button>
       </Modal>
-    </div>
+    </div >
   )
 }
 
